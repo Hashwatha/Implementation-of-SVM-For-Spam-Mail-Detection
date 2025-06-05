@@ -34,32 +34,24 @@ RegisterNumber: 212223240051
 import pandas as pd
 data=pd.read_csv("spam.csv",encoding='windows-1252')
 
-
 data.head()
-
 
 data.info()
 
-
 data.isnull().sum()
 
-
-x=data["v1"].values
-y=data["v2"].values
-
+x=data["v2"].values
+y=data["v1"].values
 
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.35,random_state=0)
-
 
 from sklearn.feature_extraction.text import CountVectorizer
 #countvectorizer is a method to convert text to numerical data. The text is transformed to a sparse matrix
 cv=CountVectorizer()
 
-
 x_train=cv.fit_transform(x_train)
 x_test=cv.transform(x_test)
-
 
 from sklearn.svm import SVC
 svc=SVC()
@@ -67,11 +59,9 @@ svc.fit(x_train,y_train)
 y_pred=svc.predict(x_test)
 y_pred
 
-
 from sklearn import metrics
 accuracy=metrics.accuracy_score(y_test,y_pred)
 accuracy
-
 
 from sklearn.metrics import confusion_matrix,classification_report
 con=confusion_matrix(y_test,y_pred)
@@ -85,23 +75,32 @@ print(cl)
 
 ## data.head:
 
-![image](https://github.com/user-attachments/assets/19e5bc1c-57f4-4e4e-a701-a886e558b005)
+![image](https://github.com/user-attachments/assets/2db24cd6-d703-48d8-89fd-f3b679568d54)
 
 ## data.info:
 
-![image](https://github.com/user-attachments/assets/777a0e88-d6bc-40d8-b435-cb5cbf8d7c5e)
+![image](https://github.com/user-attachments/assets/a76433f6-a1d9-4837-9ff5-8ebd71240a31)
 
 ## data.isnull:
 
-![image](https://github.com/user-attachments/assets/ffae58fd-cfee-4e7d-9e4a-f38aed4aff4d)
+![image](https://github.com/user-attachments/assets/3fe9c8b1-c9c0-4405-a1da-f88d155f81b9)
+
+## y_predict :
+
+![image](https://github.com/user-attachments/assets/e64fe523-8aa2-4427-9e6e-c53caf41d2df)
 
 ## accuracy :
 
-![image](https://github.com/user-attachments/assets/553427f9-b45b-430b-a06d-fde95dd90e4c)
+![image](https://github.com/user-attachments/assets/ce07e77e-88c5-4c46-8a43-a570cff3c18a)
 
 ## confusion matrix:
 
-![image](https://github.com/user-attachments/assets/bbd88924-18ce-4bfe-8dd6-6298164aab92)
+![image](https://github.com/user-attachments/assets/367672fc-fc3b-4a09-8e54-c4a4720a8ac9)
+
+## classification_report :
+
+![image](https://github.com/user-attachments/assets/5138fabc-bba4-4cbf-9b51-883f30707da2)
 
 ## Result:
+
 Thus the program to implement the SVM For Spam Mail Detection is written and verified using python programming.
